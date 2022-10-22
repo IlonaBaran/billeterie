@@ -1,0 +1,52 @@
+body{
+	height: 95%;
+	background-color: rgb(211, 220, 194);	
+}
+
+#container {
+	 display: grid; 
+	 grid-template-columns: 30% 50% 20%; 
+	 grid-template-rows: 30% 10% 50% 10%;
+	 height: 100%;	
+	 background-color: rgb(211, 220, 194);
+}
+
+#infoPerso {
+	grid-column : 1;
+	grid-row : 1; 
+	background-color: rgb(210, 20, 194);
+}
+
+#mesreservation {
+	grid-column : 1;
+	grid-row : 3; 
+	background-color: rgb(211, 220, 94);
+}
+
+#events {
+	grid-column : 2;
+	grid-row : 2 / span 2; 
+	background-color: rgb(241, 200, 94);
+	
+	display: grid; 
+	 grid-template-columns: 80% 20%; 
+	 grid-template-rows: 20% 20% 60%;
+}
+
+#titre {
+	grid-column : 1;
+	grid-row : 1; 
+	background-color: rgb(51, 206, 194);
+}
+
+#select {
+	grid-column : 1;
+	grid-row : 2; 
+	background-color: rgb(51, 206, 194);
+}
+
+#deconnexion {
+	grid-column : 3;
+	grid-row : 1; 
+	background-color: rgb(251, 120, 294);
+}

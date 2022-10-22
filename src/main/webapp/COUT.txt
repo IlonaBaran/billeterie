@@ -1,0 +1,113 @@
+    <ul>
+        <c:forEach var="utilisateur" items="${utilisateurs}">
+            <li><c:out value="${utilisateur.prenom}" /> <c:out value="${ utilisateur.nom }" /></li>
+        </c:forEach>
+    </ul>    
+    
+    
+
+    
+    
+    
+    package com.octest.servlets;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.octest.bdd.Noms;
+import com.octest.beans.Utilisateur;
+
+
+/**
+ * Servlet implementation class Test
+ */
+@WebServlet("/Test")
+public class Test extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+   
+    public Test() {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Noms tableNoms = new Noms();
+        request.setAttribute("utilisateurs", tableNoms.recupererUtilisateurs());
+        this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    }
+
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setSurname(request.getParameter("nom"));
+        utilisateur.setFirstname(request.getParameter("prenom"));
+        
+        Noms tableNoms = new Noms();
+        tableNoms.ajouterUtilisateur(utilisateur);
+        
+        request.setAttribute("utilisateurs", tableNoms.recupererUtilisateurs());
+        
+        this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    }
+}
+
+
+
+
+      	
+	
+    <form method="post" action="Admin">
+ 
+            <label for="name">Nom : </label>
+            <input type="text" name="name" id="name" />
+            
+            <label for="conference_room">conference_room : </label>
+            <input type="text" name="conference_room" id="conference_room" />
+            
+                    <label for="covid_mode">covid_mode : </label>
+            <input type="text" name="covid_mode" id="covid_mode" />
+            
+                        <label for="number_seats">number_seats : </label>
+            <input type="text" name="number_seats" id="number_seats" />
+            
+                        <label for="date">date : </label>
+            <input type="text" name="date" id="date" />
+           
+             
+
+
+
+// ACHETER UN TICKET LORSQUE L UTILISATEUR CLIQUE SUR ACHETER UN BILLET 
+		if (request.getParameter("buyTickets") != null) {
+			
+	        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEventBuy.jsp").forward(request, response);
+
+			
+			String id = request.getParameter("param.id");
+			
+			System.out.println("__________________________");
+			System.out.println(id);
+			System.out.println(request.getParameter("${param.id}"));
+			System.out.println("__________________________");
+
+			Place place = new Place();
+			place.setIdPlace("8");
+			place.setIdUser(id);
+			place.setIdEvent("8");
+
+			EnregistrementPlace placeTable = new EnregistrementPlace ();
+			placeTable.ajouterPlace(place, "reservationconference");
+			
+		}
+     
+     

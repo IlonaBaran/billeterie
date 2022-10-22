@@ -1,0 +1,53 @@
+<html>
+<head>
+<link rel="stylesheet" href="style/indexstyle.css">
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="connexion">
+
+	<form method="post" id="connexionForm" action="Valider">
+		<div id="connexionStatut">
+			<label for="etudiant">Etudiant</label>
+			<input type="radio" name="statut" id="etudiant" value="1"/>
+			            
+			<label for="personnel">Personnel</label>
+			<input type="radio" name="statut" id="personnel" value="2"/>
+			
+			<label for="admin">Administrateur</label>
+			<input type="radio" name="statut" id="admin" value="3"/>
+		</div>
+		
+		<div id="connexionParametre">
+            <input type="text" name="surname" id="surname" placeholder="Nom" id="connexionParametreNom"/>
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom" id="connexionParametrePrenom"/>
+        </div>      
+        
+        <input type="submit" value="Se connecter" id ="connexionSubmit"/>
+	</form>
+	
+	
+	<form method="post" action="Enregistrer" id="enregistrement">
+	<label>Vous n'avez pas encore de compte ?</label>
+		<input type="submit" name="enregistrer" id="enregistrer" value="Créer un compte"/>
+	</p>
+	</form>
+	</div>
+	
+	<div id="presentation">
+		<em>Bienvenue sur le site 'Challensg' </em>
+	</div>
+	
+	
+	<div id="nextnews">
+		<em>Bienvenue sur le site 'Challensg' </em>
+	</div>
+	
+</div>
+
+	
+</body>
+</html>
