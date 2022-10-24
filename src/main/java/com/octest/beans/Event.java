@@ -4,10 +4,12 @@ public class Event {
 	
 	private String id;
     private String name;
-    private String conferenceRoom;
+    private String conference_room;
     private String date;
     private String time;
-    private String covidMode;
+    private String covid_mode;
+    private String description;
+    private String free_seats;
     
     public String getId() {
         return id;
@@ -24,10 +26,10 @@ public class Event {
     }
     
     public String getConferenceRoom() {
-        return conferenceRoom;
+        return conference_room;
     }
-    public void setConferenceRoom(String conferenceRoom) {
-        this.conferenceRoom = conferenceRoom;
+    public void setConferenceRoom(String conference_room) {
+        this.conference_room = conference_room;
     }
     
     public String getDate() {
@@ -45,9 +47,25 @@ public class Event {
     }
     
     public String getCovidMode() {
-        return covidMode;
+        return covid_mode;
     }
-    public void setCovidMode(String covidMode) {
-        this.covidMode = covidMode;
+    public void setCovidMode(String covid_mode) {
+        this.covid_mode = covid_mode;
     }
+    
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public String getFreeSeats() {
+        return free_seats;
+    }
+    public void setFreeSeats(String free_seats) {
+        this.free_seats = free_seats;
+    }
+    
+
 }

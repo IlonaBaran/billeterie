@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
-	<display-name>billeterieProjet</display-name>
+	<display-name>billeterie</display-name>
 	
    <servlet>
    	<servlet-name>Etudiant</servlet-name>
@@ -107,10 +107,21 @@
 	  	<servlet-name>Deconnexion</servlet-name>
 	  	<servlet-class>com.octest.servlets.Deconnexion</servlet-class>
 	  </servlet>
+	  <servlet>
+	  	<description>
+	  	</description>
+	  	<display-name>AdminEvent</display-name>
+	  	<servlet-name>AdminEvent</servlet-name>
+	  	<servlet-class>com.octest.servlets.AdminEvent</servlet-class>
+	  </servlet>
 	     	<servlet-mapping>
    		<servlet-name>Deconnexion</servlet-name>
    		<url-pattern>/Deconnexion</url-pattern>
    	</servlet-mapping>
+	     	<servlet-mapping>
+	     		<servlet-name>AdminEvent</servlet-name>
+	     		<url-pattern>/AdminEvent</url-pattern>
+	     	</servlet-mapping>
    	
    	
 

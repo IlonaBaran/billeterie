@@ -18,6 +18,11 @@
 		
 		<div id="mesreservation">
 			<legend class="titre">Mes réservations et mes billets</legend>
+			<ul>
+	        <c:forEach var="event" items="${eventsUser}">
+	            <li><c:out value="${event.idEvent}" /></li>
+	        </c:forEach>
+	    	</ul>    
 		</div>
 	
 		<div id="events">

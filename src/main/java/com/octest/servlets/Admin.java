@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.octest.bdd.Enregistrement;
 import com.octest.bdd.EnregistrementEvent;
 import com.octest.bdd.EnregistrementSalle;
+import com.octest.bdd.Noms;
 import com.octest.beans.ConferenceRoom;
 import com.octest.beans.Utilisateur;
 import com.octest.beans.Event;
@@ -29,7 +30,7 @@ public class Admin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		EnregistrementEvent tableEvent = new EnregistrementEvent();
 		request.setAttribute("events", tableEvent.recupererEvent());
 		
@@ -51,26 +52,26 @@ public class Admin extends HttpServlet {
 
 		EnregistrementSalle conferenceRoomTable = new EnregistrementSalle ();
 		conferenceRoomTable.ajouterSalle(conferenceRoom);
-		
 		request.setAttribute("rooms", conferenceRoomTable.recupererConferenceRoom());
 
+		
 		// ENREGISTRER UN NOUVEL EVENEMENT + AFFICHAGE 
 		Event event = new Event();
 		event.setName(request.getParameter("nameEvent"));
 		event.setConferenceRoom(request.getParameter("conferenceRoom"));
 		event.setDate(request.getParameter("date"));
+		event.setTime(request.getParameter("time"));
 		event.setCovidMode(request.getParameter("covidMode"));
+		//event.setCovidMode(request.getParameter("description"));
 		
-        System.out.println("________________________________");
-        System.out.println(request.getParameter("conferenceRoom"));
-        System.out.println(request.getParameter("date"));
-        System.out.println("________________________________");
-
+        System.out.println("___________");
+        System.out.println(request.getParameter("nameEvent"));
+        System.out.println(request.getParameter("date") + "___" + request.getParameter("time"));
+        System.out.println("___________");
 
 		EnregistrementEvent tableEvent = new EnregistrementEvent();
 		tableEvent.ajouterEvent(event);
 		request.setAttribute("events", tableEvent.recupererEvent());
-		
 		
 		
 		// ENREGISTRER UN NOUVEL ADMIN + AFFICHAGE 
@@ -82,6 +83,22 @@ public class Admin extends HttpServlet {
         Enregistrement userTable = new Enregistrement ();
         userTable.ajouterUtilisateur(utilisateur);
 
+		if (request.getParameter("Etudiants") != null) {
+			Noms tableNoms = new Noms();
+			request.setAttribute("noms", tableNoms.recupererUtilisateursStatut("1"));
+			System.out.println("Etudiants");
+		}
+		if (request.getParameter("Personnel") != null) {
+			Noms tableNoms = new Noms();
+			request.setAttribute("noms", tableNoms.recupererUtilisateursStatut("2"));
+			System.out.println("Personnel");
+		}
+		if (request.getParameter("Administrateur") != null) {
+			Noms tableNoms = new Noms();
+			request.setAttribute("noms", tableNoms.recupererUtilisateursStatut("3"));
+			System.out.println("Administrateur");
+		}
+		
         this.getServletContext().getRequestDispatcher("/WEB-INF/statut/admin.jsp").forward(request, response);
 
 	}

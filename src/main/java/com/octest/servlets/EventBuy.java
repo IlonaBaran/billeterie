@@ -43,20 +43,15 @@ public class EventBuy extends HttpServlet {
 		EnregistrementEvent tableEvent = new EnregistrementEvent();
 		request.setAttribute("events", tableEvent.recupererEvent());
 		
-        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEventBuy.jsp").forward(request, response);
-		
 		// ACHETER UN TICKET LORSQUE L UTILISATEUR CLIQUE SUR ACHETER UN BILLET 	
 		//if (request.getParameter("buyTickets") != null) {
 			//String id = request.getParameter("id");
 			String idEvent = request.getParameter("listEvent");
+			
+			System.out.println("tttttttttttt" + idEvent);
 
-			System.out.println("_________________");
 			HttpSession session = request.getSession(true);	
 			String id = (String) session.getAttribute("id");
-
-			System.out.println(id);
-			System.out.println(idEvent);
-			System.out.println("_________________");
 			
 			Place place = new Place();
 			place.setIdUser(id);
@@ -64,11 +59,13 @@ public class EventBuy extends HttpServlet {
 	
 			EnregistrementPlace placeTable = new EnregistrementPlace ();
 			placeTable.ajouterPlace(place, idEvent);
-		//}
-		
-		//doGet(request, response);
-		
-        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEventBuy.jsp").forward(request, response);
+
+		// RECUPERER LA LISTE DES EVENEMENTS AUQUEL L UTILISATEUR PARTICIPE
+		EnregistrementPlace tableEventUser = new EnregistrementPlace();
+		request.setAttribute("eventsUser", tableEventUser.recupererPlaceUser(id));
+					
+				
+        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEvent.jsp").forward(request, response);
 
 	}
 
