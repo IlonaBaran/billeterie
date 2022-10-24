@@ -78,6 +78,47 @@ public class Noms {
     
     //____________________________________
     
-    
+    public List<Utilisateur> recupererUtilisateursStatut(String statut) {
+        List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+        Statement statement = null;
+        ResultSet resultat = null;
+
+        loadDatabase();
+        
+        try {
+            statement = connexion.createStatement();
+
+            // Exécution de la requête
+            resultat = statement.executeQuery("SELECT id, surname, firstname FROM user WHERE statut = " + statut);
+
+            // Récupération des données
+            while (resultat.next()) {
+                String id = resultat.getString("id");
+                String surname = resultat.getString("surname");
+                String firstname = resultat.getString("firstname");
+
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setId(id);
+                utilisateur.setSurname(surname);
+                utilisateur.setFirstname(firstname);
+
+                utilisateurs.add(utilisateur);
+            }
+        } catch (SQLException e) {
+        } finally {
+            // Fermeture de la connexion
+            try {
+                if (resultat != null)
+                    resultat.close();
+                if (statement != null)
+                    statement.close();
+                if (connexion != null)
+                    connexion.close();
+            } catch (SQLException ignore) {
+            }
+        }
+        
+        return utilisateurs;
+    }
 
 }

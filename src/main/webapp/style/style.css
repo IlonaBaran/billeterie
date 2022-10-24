@@ -10,3 +10,55 @@
 	font-variant: normal;
 	text-transform: none;
 }
+
+.subtitre{
+	font-family: Georgia, serif;
+	font-size: 20px;
+	letter-spacing: -1px;
+	word-spacing: 1.2px;
+	color: #000000;
+	font-weight: normal;
+	text-decoration: none;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+}
+
+
+.scroll{
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: rebeccapurple green;
+}
+
+.button {
+	background:linear-gradient(to bottom, #8eb897 5%, #5b7553 100%);
+	background-color:#8eb897;
+	border-radius:14px;
+	border: none;
+    cursor:pointer;
+	color:#ffffff;
+	padding:10px 15px;
+}
+
+.button:hover {
+	background:linear-gradient(to bottom, #5b7553 5%, #8eb897 100%);
+	background-color:#5b7553;
+}
+
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+.border{
+	border:3px solid #a5b692;
+	background-color: rgb(211, 220, 194);
+}
+
+
+li{
+	background-color:  rgb(241, 230, 234);
+	margin-left : 1%;
+	margin-top : 1%;
+}

@@ -27,14 +27,16 @@ public class EnregistrementSalle {
             statement = connexion.createStatement();
 
             // Exécution de la requête
-            resultat = statement.executeQuery("SELECT name_room, seats_room FROM conference_room;");
+            resultat = statement.executeQuery("SELECT id, name_room, seats_room FROM conference_room;");
 
             // Récupération des données
             while (resultat.next()) {
+                String id = resultat.getString("id");
                 String name_room = resultat.getString("name_room");
                 String seats_room = resultat.getString("seats_room");
 
                 ConferenceRoom conferenceRoom = new ConferenceRoom();
+                conferenceRoom.setId(id);
                 conferenceRoom.setName(name_room);
                 conferenceRoom.setSeats(seats_room);
                 
@@ -90,4 +92,50 @@ public class EnregistrementSalle {
             e.printStackTrace();
         }
     }
+    
+    
+    // ____________________________________________________________
+    
+    // _______________________
+    
+    
+    public String recupererNbPlace(String id) {
+    	ConferenceRoom conferenceRoom = new ConferenceRoom();
+        Statement statement = null;
+        ResultSet resultat = null;
+
+        loadDatabase();
+        
+        try {
+            statement = connexion.createStatement();
+	
+	        // Exécution de la requête
+	        resultat = statement.executeQuery("SELECT name_room, seats_room FROM conference_room WHERE id = " + id);
+	        
+            while (resultat.next()) {
+
+	            String seats_room = resultat.getString("seats_room");
+	            String name_room = resultat.getString("name_room");
+            
+	            conferenceRoom.setId(id);
+	            conferenceRoom.setName(name_room);
+	            conferenceRoom.setSeats(seats_room);
+            }
+	    } 
+        catch (SQLException e) {
+	        } finally {
+	            // Fermeture de la connexion
+	            try {
+	                if (resultat != null)
+	                    resultat.close();
+	                if (statement != null)
+	                    statement.close();
+	                if (connexion != null)
+	                    connexion.close();
+	            } catch (SQLException ignore) {
+	            }
+	        }
+	    return conferenceRoom.getSeats();
+    }
+    
 }

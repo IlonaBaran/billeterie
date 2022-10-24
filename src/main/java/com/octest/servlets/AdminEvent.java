@@ -1,49 +1,42 @@
 package com.octest.servlets;
-
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.octest.bdd.Enregistrement;
 import com.octest.bdd.EnregistrementEvent;
-import com.octest.bdd.EnregistrementPlace;
 import com.octest.bdd.EnregistrementSalle;
 import com.octest.beans.ConferenceRoom;
-import com.octest.beans.Place;
+import com.octest.beans.Utilisateur;
+import com.octest.beans.Event;
 
 /**
- * Servlet implementation class EventEtudiant
+ * Servlet implementation class Admin
  */
-public class EventList extends HttpServlet {
+public class AdminEvent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventList() {
+    public AdminEvent() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// RECUPERER LA LISTE DES EVENEMENTS
 		EnregistrementEvent tableEvent = new EnregistrementEvent();
 		request.setAttribute("events", tableEvent.recupererEvent());
 		
-		// INFORMATION PEROSNNELLES
-		HttpSession session = request.getSession(true);	
-		String id = (String) session.getAttribute("id");
-		
-		// RECUPERER LA LISTE DES EVENEMENTS AUQUEL L UTILISATEUR PARTICIPE
-		EnregistrementPlace tableEventUser = new EnregistrementPlace();
-		request.setAttribute("eventsUser", tableEventUser.recupererPlaceUser(id));
+		EnregistrementSalle tableRoom = new EnregistrementSalle();
+		request.setAttribute("rooms", tableRoom.recupererConferenceRoom());
         
-		this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEvent.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/admin.jsp").forward(request, response);
 
 	}
 
@@ -51,10 +44,24 @@ public class EventList extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EnregistrementEvent tableEvent = new EnregistrementEvent();
-		request.setAttribute("events", tableEvent.recupererEvent());
+		EnregistrementSalle tableRoom = new EnregistrementSalle();
+		request.setAttribute("rooms", tableRoom.recupererConferenceRoom());
 		
-        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEvent.jsp").forward(request, response);
+		// ENREGISTRER UN NOUVEL EVENEMENT + AFFICHAGE 
+		Event event = new Event();
+		event.setName(request.getParameter("nameEvent"));
+		event.setConferenceRoom(request.getParameter("conferenceRoom"));
+		event.setDate(request.getParameter("date"));
+		event.setTime(request.getParameter("time"));
+		event.setCovidMode(request.getParameter("covidMode"));
+		event.setDescription(request.getParameter("description"));
+		
+		EnregistrementEvent tableEvent = new EnregistrementEvent();
+		tableEvent.ajouterEvent(event);
+		request.setAttribute("events", tableEvent.recupererEvent());
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/statut/admin.jsp").forward(request, response);
+
 	}
 
 }

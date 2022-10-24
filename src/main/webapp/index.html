@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style/indexstyle.css">
+<link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -22,19 +23,23 @@
 		</div>
 		
 		<div id="connexionParametre">
-            <input type="text" name="surname" id="surname" placeholder="Nom" id="connexionParametreNom"/>
-            <input type="text" name="firstname" id="firstname" placeholder="Prénom" id="connexionParametrePrenom"/>
-        </div>      
+			<input type="text" class="input-info" name="surname" id="surname" placeholder="Nom"/>           
+         	<input type="text" class="input-info" name="firstname" id="firstname" placeholder="Prénom"/>
+    
+           	<input type="submit" class="button" value="Se connecter" id ="connexionSubmit"/>     
+         </div>      
         
-        <input type="submit" value="Se connecter" id ="connexionSubmit"/>
+        
 	</form>
 	
+	<div id="enregistrer">
+		<form method="post" action="Enregistrer" id="enregistrement">
+		<label>Vous n'avez pas encore de compte ?</label>
+		<p> </p>
+			<input type="submit" class="button" name="enregistrer" value="Créer un compte"/>
+		</form>
+	</div>
 	
-	<form method="post" action="Enregistrer" id="enregistrement">
-	<label>Vous n'avez pas encore de compte ?</label>
-		<input type="submit" name="enregistrer" id="enregistrer" value="Créer un compte"/>
-	</p>
-	</form>
 	</div>
 	
 	<div id="presentation">
@@ -42,8 +47,13 @@
 	</div>
 	
 	
-	<div id="nextnews">
-		<em>Bienvenue sur le site 'Challensg' </em>
+	<div id="nextnews" class="scroll">
+		<p>Les dernieres nouveautés</p>
+		<p>Les dernieres nouveautés</p>
+		<p>Les dernieres nouveautés</p>
+		<p>Les dernieres nouveautés</p>
+		<p>Les dernieres nouveautés</p>
+
 	</div>
 	
 </div>

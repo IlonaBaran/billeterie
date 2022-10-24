@@ -5,8 +5,7 @@ body{
 #container {
 	 display: grid; 
 	 grid-template-columns: 5% 25% 5% 65%; 
-	 grid-template-rows: 10% 50% 15% 6% 19%;
-	 
+	 grid-template-rows: 5% 50% 15% 25% 5%;
 	 height: 100%;	 
 }
 
@@ -16,66 +15,28 @@ body{
 	border:3px solid #a5b692;
 	height: 100%;	
 	background-color: rgb(211, 220, 194);
-	
-	display: grid; 
-	 grid-template-columns: 100%; 
-	 grid-template-rows: 5% 60% 20% 5%;	
-}
-
-
-#connexionForm{
-	grid-column : 1;
-	grid-row : 2;	
-	height: 100%;	
-	margin: auto;
-	
-	display: grid; 
-	 grid-template-columns: 100%; 
-	 grid-template-rows: 5% 20% 35% 10% 50%;	
 }
 
 #connexionStatut{
-	grid-column : 1;
-	grid-row : 2;
+	display:block;
+	margin-left: 10%;
+	margin-top: 5%;
 }
 
 #connexionParametre{
-	grid-column : 1;
-	grid-row : 3;
-	
-	display: grid; 
-	 grid-template-columns: 100%; 
-	 grid-template-rows: 5% 40% 5% 40% 5%;	
-}
-
-#connexionParametreNom{
-	grid-column : 1;
-	grid-row : 2;
-	margin: auto;
-
-}
-
-#connexionParametrePrenom{
-	grid-column : 1;
-	grid-row : 4;
-	margin: auto;
+	text-align:center;
+	padding-top:20px;
+	padding-left:5px;
+	padding-right:5px;
 }
 
 #connexionSubmit{
-	grid-column : 1;
-	grid-row : 4;
+
 	margin: auto;
 }
 
 
 
-#enregistrement{
-	grid-column : 1;
-	grid-row : 3;
-	padding-top: 10%;
-	
-	margin: auto;
-}
 
 #presentation{
 	grid-column : 4;
@@ -96,4 +57,19 @@ body{
 	background-color: rgb(211, 220, 194);
 	border:3px solid #a5b692;
 	
+}
+
+#enregistrer{
+	text-align: center;
+}
+
+#enregistrement{
+	padding: 20px;
+}
+
+.input-info{
+	display: block;
+  	margin-bottom: 5px;
+  	padding: 5px;
+  	width:100%;
 }
