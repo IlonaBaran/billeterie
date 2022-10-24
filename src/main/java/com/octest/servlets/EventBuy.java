@@ -32,6 +32,14 @@ public class EventBuy extends HttpServlet {
 		EnregistrementEvent tableEvent = new EnregistrementEvent();
 		request.setAttribute("events", tableEvent.recupererEvent());
 		
+		// RECUPERER LA LISTE DES EVENEMENTS AUQUEL L UTILISATEUR PARTICIPE
+		HttpSession session = request.getSession(true);	
+		String id = (String) session.getAttribute("id");
+		
+		
+		EnregistrementPlace tableEventUser = new EnregistrementPlace();
+		request.setAttribute("eventsUser", tableEventUser.recupererPlaceUser(id));
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/statut/etudiantEventBuy.jsp").forward(request, response);
 	}
 
@@ -48,8 +56,6 @@ public class EventBuy extends HttpServlet {
 			//String id = request.getParameter("id");
 			String idEvent = request.getParameter("listEvent");
 			
-			System.out.println("tttttttttttt" + idEvent);
-
 			HttpSession session = request.getSession(true);	
 			String id = (String) session.getAttribute("id");
 			

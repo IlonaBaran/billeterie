@@ -1,11 +1,10 @@
 body{
 	height: 100%;
-	background-color: #9DDBAD;	
 }
 	
 #container {
 	 display: grid; 
-	 grid-template-columns: 30% 60% 10%; 
+	 grid-template-columns: 30% 70%; 
 	 grid-template-rows: 30% 10% 50%;
 	  /*background-color: rgb(211, 220, 194);*/
 }
@@ -13,7 +12,6 @@ body{
 #infoPerso {
 	grid-column : 1;
 	grid-row : 1; 
-	background-color: rgb(210, 20, 194);
     text-align: center;
     padding: 5px;
 }
@@ -21,33 +19,28 @@ body{
 #mesreservation {
 	grid-column : 1;
 	grid-row : 3; 
-	background-color: rgb(211, 220, 94);
+	background-color: rgb(211, 220, 194);
     text-align: center;
     padding: 5px;
 }
 
 #events {
 	grid-column : 2;
-	grid-row : 2 / span 2; 
+	grid-row : 1 / span 3; 
 	padding:5px;
-	background-color: rgb(241, 200, 94);
+	background-color: rgb(211, 220, 194);
 }
 
 #titre {
 	grid-column : 1;
 	grid-row : 1; 
-	background-color: rgb(51, 206, 194);
+	background-color: rgb(211, 220, 194);
 }
 
 #select {
 	grid-column : 1;
 	grid-row : 2; 
-	background-color: rgb(51, 206, 194);
-}
-
-#deconnexion {
-	grid-column : 3;
-	grid-row : 1; 
+	background-color: rgb(211, 220, 194);
 }
 
 #deconnexionbutton {
